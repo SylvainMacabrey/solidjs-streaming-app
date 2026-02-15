@@ -35,4 +35,4 @@ You can deploy the `dist` folder to any static host provider (netlify, surge, no
 
 ## Navigation
 
-Utilioser les flèches directionelle de votre clavier pour vous déplacer. Utiliser le bouton "Entrer" pour sélectionner, et "Retour" pour retourner en arrière.
+Utiliser les flèches directionelle de votre clavier pour vous déplacer. Utiliser le bouton "Entrer" pour sélectionner, et "Retour" pour retourner en arrière.

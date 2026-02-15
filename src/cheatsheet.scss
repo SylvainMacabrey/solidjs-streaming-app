@@ -1,0 +1,190 @@
+body {
+  background-color: #101010;
+  margin: 0;
+  /* Désactive la barre de scroll pour un look "App" */
+  overflow: hidden; 
+  color: white;
+}
+
+.movie-row {
+  height: 100%; /* Elle prendra les 300px définis par le parent */
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.row-inner {
+  display: flex;
+  align-items: center;
+  /* On commence à 5% pour l'alignement TV standard */
+  padding-left: 5%; 
+  transition: transform 0.4s cubic-bezier(0.2, 0, 0.2, 1);
+}
+
+.hero-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 50vh; /* On prend une grande partie de l'écran */
+  z-index: 0;
+  color: white;
+  overflow: hidden;
+}
+
+.hero-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.5s ease-in-out;
+  animation: fadeIn 0.8s ease-in;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  /* Double dégradé : un noir vers le bas pour fusionner avec la liste, 
+     un noir vers la gauche pour le texte */
+  background: 
+    linear-gradient(to top, #101010 5%, transparent 50%),
+    linear-gradient(to right, rgba(16, 16, 16, 0.9) 10%, rgba(16, 16, 16, 0.4) 40%, transparent 100%);
+}
+
+.hero-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  padding: 80px 5%;
+  width: 80%;
+  margin-top: 30px;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: bold;
+  margin: 0 0 15px 0;
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+}
+
+.hero-overview {
+  width: 80%;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: #cccccc;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.detail-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85); /* Fond sombre derrière la modal */
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.detail-container {
+  width: 90vw;
+  height: 85vh;
+  background: #181818;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+}
+
+.detail-backdrop {
+  width: 100%;
+  height: 60%;
+  object-fit: cover;
+  mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+}
+
+.detail-body {
+  padding: 40px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.btn-play {
+  padding: 15px 40px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  background: white;
+  color: black;
+  cursor: pointer;
+}
+
+.close-hint {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(0,0,0,0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.media-container {
+  position: relative;
+  width: 100%;
+  height: 60%;
+  background: #000;
+}
+
+.full-video {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* On s'assure que le bouton "Play" change de style quand on joue */
+.btn-play.playing {
+  background: #ff0000;
+}
+
+.fullscreen-player {
+  position: fixed; /* Sort du flux de la modal */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: black;
+  z-index: 2000; /* Au-dessus de la modal (qui est à 1000) */
+}
+
+.fullscreen-player iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.fullscreen-player-error {
+  position: fixed; /* Sort du flux de la modal */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: black;
+  z-index: 2000; /* Au-dessus de la modal (qui est à 1000) */
+  display: flex;
+  justify-content: center; /* Centrage horizontal */
+  align-items: center;     /* Centrage vertical */
+  border: 1px solid black;
+}
